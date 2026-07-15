@@ -28,6 +28,26 @@ const ICON_COLORS = [
   "text-cyan-600",
 ];
 
+const PRODUCT_IMAGES = [
+  "https://images.unsplash.com/photo-1498045725627-812f8b7b4f8d?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85",
+];
+
+function getProductImage(product: Product) {
+  if (product.imageUrl) return product.imageUrl;
+
+  const name = product.name.toLowerCase();
+  if (/phone|laptop|camera|headphone|watch|electronic|computer/.test(name)) return PRODUCT_IMAGES[0];
+  if (/shoe|fashion|shirt|dress|jacket|bag|wear/.test(name)) return PRODUCT_IMAGES[2];
+  if (/book|novel|journal/.test(name)) return PRODUCT_IMAGES[3];
+  if (/home|chair|table|lamp|kitchen|decor/.test(name)) return PRODUCT_IMAGES[5];
+  return PRODUCT_IMAGES[product.id % PRODUCT_IMAGES.length];
+}
+
 function fakeRating(id: number) {
   return 3.5 + (id % 15) / 10;
 }
@@ -38,21 +58,30 @@ function fakeReviews(id: number) {
 
 export default function ProductCard({ product, isCustomer, onAddToCart, adding }: Props) {
   const [qty, setQty] = useState(1);
+  const [imageFailed, setImageFailed] = useState(false);
   const outOfStock = product.quantity <= 0;
   const gradient = GRADIENTS[product.id % GRADIENTS.length];
   const iconColor = ICON_COLORS[product.id % ICON_COLORS.length];
   const initials = product.name.slice(0, 2).toUpperCase();
+  const imageUrl = getProductImage(product);
   const rating = fakeRating(product.id);
   const reviews = fakeReviews(product.id);
   const whole = Math.floor(product.price);
   const cents = Math.round((product.price - whole) * 100);
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white p-3 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-link/30 hover:shadow-card-hover">
-      <div
-        className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${gradient}`}
-      >
-        <span className={`font-display text-4xl font-extrabold tracking-tight ${iconColor} opacity-80`}>{initials}</span>
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-card p-3 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-link/30 hover:shadow-card-hover">
+      <div className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${gradient}`}>
+        {!imageFailed ? (
+          <img
+            src={imageUrl}
+            alt={product.name}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <span className={`font-display text-4xl font-extrabold tracking-tight ${iconColor} opacity-80`}>{initials}</span>
+        )}
         {product.quantity > 0 && product.quantity <= 10 && (
           <span className="absolute left-2 top-2 rounded-full bg-brand-orange px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
             BEST SELLER

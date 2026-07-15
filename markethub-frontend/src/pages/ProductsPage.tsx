@@ -106,7 +106,7 @@ export default function ProductsPage() {
           </p>
           {user?.role === "CUSTOMER" && (
             <Link to="/cart" className="btn-amazon mt-4 w-fit text-sm font-semibold no-underline">
-              Open your bag
+              Open your cart
             </Link>
           )}
         </div>
@@ -120,8 +120,8 @@ export default function ProductsPage() {
             onClick={() => setCategory(cat)}
             className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
               category === cat
-                ? "border-brand-orange bg-brand-orange text-white"
-                : "border-line bg-white text-ink hover:border-brand-orange/50"
+                ? "border-brand-orange bg-brand-orange text-nav"
+                : "border-line bg-card text-ink hover:border-brand-orange/50"
             }`}
           >
             {cat}
@@ -145,7 +145,7 @@ export default function ProductsPage() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as SortOption)}
-            className="rounded-md border border-line bg-white px-3 py-1.5 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-brand-orange"
+            className="rounded-md border border-line bg-card px-3 py-1.5 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-brand-orange"
           >
             <option value="default">Curated</option>
             <option value="price-asc">Price: Low to High</option>

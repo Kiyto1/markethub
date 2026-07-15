@@ -26,6 +26,7 @@ export interface Product {
   quantity: number;
   sellerId: number;
   sellerUsername: string;
+  imageUrl?: string;
 }
 
 export interface CartItem {

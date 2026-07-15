@@ -102,11 +102,11 @@ export default function Navbar() {
                       </p>
                     </div>
                   </button>
-                  <div className="invisible absolute right-0 top-full z-50 w-52 rounded-md border border-line bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute right-0 top-full z-50 w-52 rounded-md border border-line bg-card py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                     <div className="border-b border-line px-4 py-2">
                       <p className="text-xs text-muted">Signed in as</p>
                       <p className="text-sm font-semibold text-ink">{user.username}</p>
-                      <span className="mt-1 inline-block rounded bg-gray-100 px-2 py-0.5 text-xs text-muted">
+                      <span className="mt-1 inline-block rounded bg-line-light px-2 py-0.5 text-xs text-muted">
                         {user.role}
                       </span>
                     </div>
@@ -153,7 +153,7 @@ export default function Navbar() {
                         </span>
                       )}
                     </div>
-                    <span className="hidden font-semibold lg:block">Bag</span>
+                    <span className="hidden font-semibold lg:block">Cart</span>
                   </Link>
                 )}
               </>
@@ -187,7 +187,7 @@ export default function Navbar() {
 
             {user?.role === "CUSTOMER" && (
               <>
-                <NavLink to="/cart" className={subLink}>Your bag</NavLink>
+                <NavLink to="/cart" className={subLink}>Your Cart</NavLink>
                 <NavLink to="/wallet" className={subLink}>
                   <span className="flex items-center gap-1.5">
                     <Wallet className="h-4 w-4" />
