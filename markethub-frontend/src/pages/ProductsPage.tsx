@@ -86,27 +86,27 @@ export default function ProductsPage() {
   return (
     <div className="page-container">
       {/* Hero banner */}
-      <div className="relative mb-6 overflow-hidden rounded-xl bg-nav">
+      <div className="relative mb-8 overflow-hidden rounded-3xl bg-nav shadow-card-hover">
         <img
           src={heroImg}
           alt="Shop deals"
-          className="h-48 w-full object-cover opacity-60 sm:h-56 lg:h-64"
+          className="h-56 w-full object-cover opacity-45 sm:h-64 lg:h-72"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-nav via-nav/70 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-center px-8 sm:px-12">
           <p className="flex items-center gap-2 text-sm font-semibold text-brand-orange">
             <Sparkles className="h-4 w-4" />
-            Today's Deals
+            A better way to browse
           </p>
           <h2 className="mt-2 max-w-md font-display text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-            Discover amazing products at unbeatable prices
+            Find pieces that feel like you
           </h2>
           <p className="mt-2 max-w-sm text-sm text-white/70">
-            {inStockCount} items in stock from trusted sellers. Free wallet checkout.
+            {inStockCount} finds are ready from independent sellers. Simple wallet checkout.
           </p>
           {user?.role === "CUSTOMER" && (
             <Link to="/cart" className="btn-amazon mt-4 w-fit text-sm font-semibold no-underline">
-              View your cart
+              Open your bag
             </Link>
           )}
         </div>
@@ -130,7 +130,7 @@ export default function ProductsPage() {
       </div>
 
       <PageHeader
-        title={query ? `Results for "${query}"` : "Shop all products"}
+        title={query ? `Results for "${query}"` : "Explore the collection"}
         subtitle={`Showing ${filtered.length} product${filtered.length !== 1 ? "s" : ""}`}
         breadcrumbs={[
           { label: "Markethub", to: "/products" },
@@ -147,7 +147,7 @@ export default function ProductsPage() {
             onChange={(e) => setSort(e.target.value as SortOption)}
             className="rounded-md border border-line bg-white px-3 py-1.5 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-brand-orange"
           >
-            <option value="default">Featured</option>
+            <option value="default">Curated</option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
             <option value="name">Name: A to Z</option>
@@ -156,7 +156,7 @@ export default function ProductsPage() {
         <div className="flex items-center gap-1.5 text-sm text-muted">
           <SlidersHorizontal className="h-4 w-4" />
           <Filter className="h-4 w-4" />
-          {filtered.length} results
+          {filtered.length} finds
         </div>
       </div>
 

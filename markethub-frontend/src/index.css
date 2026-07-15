@@ -7,6 +7,7 @@
 @layer base {
   body {
     @apply bg-paper text-ink font-body antialiased;
+    background-image: radial-gradient(circle at 12% 8%, rgba(246, 200, 95, 0.12), transparent 22rem), radial-gradient(circle at 88% 24%, rgba(8, 126, 139, 0.08), transparent 26rem);
   }
   h1, h2, h3, h4 {
     @apply font-display;
@@ -18,10 +19,10 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none;
   }
   .btn-amazon {
-    @apply btn bg-brand-yellow text-ink shadow-sm hover:bg-brand-yellow-hover border border-brand-orange/30;
+    @apply btn bg-brand-yellow text-ink shadow-sm hover:bg-brand-yellow-hover;
   }
   .btn-primary {
     @apply btn bg-brand-orange text-white hover:bg-brand-orange-dark shadow-sm;
@@ -39,7 +40,7 @@
     @apply btn bg-nav-secondary text-white hover:bg-nav border border-white/10;
   }
   .card {
-    @apply bg-card rounded-lg border border-line shadow-card;
+    @apply rounded-2xl border border-line bg-card shadow-card;
   }
   .input {
     @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-brand-orange focus:border-brand-orange;
@@ -63,7 +64,7 @@
     @apply animate-pulse rounded bg-line-light;
   }
   .page-container {
-    @apply mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
   }
   .section-title {
     @apply font-display text-xl font-bold text-ink sm:text-2xl;
