@@ -48,13 +48,13 @@ export default function ProductCard({ product, isCustomer, onAddToCart, adding }
   const cents = Math.round((product.price - whole) * 100);
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-line bg-white p-3 shadow-card transition-all duration-200 hover:shadow-card-hover hover:border-brand-orange/30">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white p-3 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-link/30 hover:shadow-card-hover">
       <div
-        className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-md bg-gradient-to-br ${gradient}`}
+        className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${gradient}`}
       >
-        <span className={`font-display text-4xl font-bold ${iconColor} opacity-80`}>{initials}</span>
+        <span className={`font-display text-4xl font-extrabold tracking-tight ${iconColor} opacity-80`}>{initials}</span>
         {product.quantity > 0 && product.quantity <= 10 && (
-          <span className="absolute left-2 top-2 rounded bg-brand-orange px-1.5 py-0.5 text-[10px] font-bold text-white">
+          <span className="absolute left-2 top-2 rounded-full bg-brand-orange px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
             BEST SELLER
           </span>
         )}
@@ -110,7 +110,7 @@ export default function ProductCard({ product, isCustomer, onAddToCart, adding }
               </button>
             </div>
             <button
-              className="btn-amazon w-full text-xs font-semibold"
+              className="btn-primary w-full text-xs font-semibold"
               disabled={outOfStock || adding}
               onClick={() => onAddToCart(product.id, qty)}
             >

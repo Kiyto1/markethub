@@ -56,18 +56,18 @@ export default function Navbar() {
       <div className="bg-nav">
         <div className="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4 sm:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-2 py-1 hover:no-underline">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-brand-orange">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-yellow text-nav">
               <Store className="h-5 w-5 text-white" />
             </div>
             <span className="hidden font-display text-lg font-extrabold tracking-tight text-white sm:block">
-              Market<span className="text-brand-orange">hub</span>
+              market<span className="text-brand-yellow">hub</span>
             </span>
           </Link>
 
           <div className="hidden items-center gap-1 text-white sm:flex">
             <MapPin className="h-4 w-4 text-white/70" />
             <div className="text-xs leading-tight">
-              <p className="text-white/60">Deliver to</p>
+              <p className="text-white/60">Shopping from</p>
               <p className="font-semibold text-white">Saudi Arabia</p>
             </div>
           </div>
@@ -78,12 +78,12 @@ export default function Navbar() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search Markethub"
+                placeholder="Search your next find"
                 className="flex-1 rounded-l-md border-0 px-4 py-2 text-sm text-ink outline-none focus:ring-2 focus:ring-brand-orange"
               />
               <button
                 type="submit"
-                className="flex items-center justify-center rounded-r-md bg-brand-orange px-4 hover:bg-brand-orange-dark"
+                className="flex items-center justify-center rounded-r-xl bg-brand-yellow px-4 text-nav hover:bg-brand-yellow-hover"
               >
                 <Search className="h-5 w-5 text-ink" />
               </button>
@@ -153,7 +153,7 @@ export default function Navbar() {
                         </span>
                       )}
                     </div>
-                    <span className="hidden font-semibold lg:block">Cart</span>
+                    <span className="hidden font-semibold lg:block">Bag</span>
                   </Link>
                 )}
               </>
@@ -181,20 +181,20 @@ export default function Navbar() {
             <NavLink to="/products" className={subLink}>
               <span className="flex items-center gap-1.5">
                 <Package className="h-4 w-4" />
-                All Products
+                Explore
               </span>
             </NavLink>
 
             {user?.role === "CUSTOMER" && (
               <>
-                <NavLink to="/cart" className={subLink}>Cart</NavLink>
+                <NavLink to="/cart" className={subLink}>Your bag</NavLink>
                 <NavLink to="/wallet" className={subLink}>
                   <span className="flex items-center gap-1.5">
                     <Wallet className="h-4 w-4" />
                     Wallet
                   </span>
                 </NavLink>
-                <NavLink to="/orders" className={subLink}>Your Orders</NavLink>
+                <NavLink to="/orders" className={subLink}>Purchases</NavLink>
               </>
             )}
 
