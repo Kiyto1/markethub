@@ -7,7 +7,7 @@
 @layer base {
   body {
     @apply bg-paper text-ink font-body antialiased;
-    background-image: radial-gradient(circle at 12% 8%, rgba(246, 200, 95, 0.12), transparent 22rem), radial-gradient(circle at 88% 24%, rgba(8, 126, 139, 0.08), transparent 26rem);
+    background-image: radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.05), transparent 22rem), radial-gradient(circle at 88% 24%, rgba(255, 255, 255, 0.03), transparent 26rem);
   }
   h1, h2, h3, h4 {
     @apply font-display;
@@ -28,10 +28,10 @@
     @apply btn bg-brand-orange text-white hover:bg-brand-orange-dark shadow-sm;
   }
   .btn-secondary {
-    @apply btn bg-white text-ink border border-line hover:bg-gray-50 shadow-sm;
+    @apply btn bg-card text-ink border border-line hover:bg-line-light shadow-sm;
   }
   .btn-danger {
-    @apply btn bg-white text-danger border border-danger/30 hover:bg-red-50;
+    @apply btn bg-card text-danger border border-danger/30 hover:bg-line-light;
   }
   .btn-ghost {
     @apply btn bg-transparent text-link hover:bg-white/10 hover:no-underline;
@@ -43,7 +43,7 @@
     @apply rounded-2xl border border-line bg-card shadow-card;
   }
   .input {
-    @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-brand-orange focus:border-brand-orange;
+    @apply w-full rounded-md border border-line bg-card px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-brand-orange focus:border-brand-orange;
   }
   .label {
     @apply mb-1 block text-sm font-medium text-ink;
